@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Custom css -->
+    <link rel="stylesheet" href="./asset/custom css/style.css">
+    <!-- DataTables CSS   -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+</head>
+
+<body>
+    <div class="bk">
+
+        <!-- output -->
+        <div class="table-responsive d-flex flex-column justify-content-center align-items-center" id="s-output">
+            <!-- Button trigger modal -->
+            <div id="bdy" class="w-75">
+                <table class="table table-striped Display" id="s-outputTable">
+                    <h1 class="text-center">Student Data</h1>
+                    <thead>
+                        <tr>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Birth Date</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Graduation</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="s-o-bdy">
+
+                    </tbody>
+                </table>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    onclick="adduser()">
+                    Add user
+                </button>
+            </div>
+            <div id="loader" class="loader">
+
+                <div class="socket">
+                    <div class="gel center-gel">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c1 r1">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c2 r1">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c3 r1">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c4 r1">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c5 r1">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c6 r1">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+
+                    <div class="gel c7 r2">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+
+                    <div class="gel c8 r2">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c9 r2">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c10 r2">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c11 r2">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c12 r2">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c13 r2">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c14 r2">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c15 r2">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c16 r2">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c17 r2">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c18 r2">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c19 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c20 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c21 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c22 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c23 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c24 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c25 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c26 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c28 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c29 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c30 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c31 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c32 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c33 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c34 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c35 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c36 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+                    <div class="gel c37 r3">
+                        <div class="hex-brick h1"></div>
+                        <div class="hex-brick h2"></div>
+                        <div class="hex-brick h3"></div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class=" align-items-center  mt-auto " id="st-form" method="post">
+                                <!-- student data -->
+                                <div class="student-data">
+                                    <h1 class="form-heading">Student Form
+                                    </h1><br>
+                                    <div class=" w-100">
+                                        <div class>
+                                            <label for="autoSizingInput">First
+                                                Name</label>
+                                            <input type="text" class="form-control" id="first-name"
+                                                placeholder="Enter First Name">
+                                            <p id="first-name-error" style="color: red;"></p>
+                                        </div>
+                                        <div>
+                                            <label for="autoSizingInput">Last
+                                                Name</label>
+                                            <input type="text" class="form-control" id="last-name"
+                                                placeholder="Enter Last Name">
+                                        </div>
+                                        <div class=" ">
+                                            <label for="autoSizingInput">Date of
+                                                birth</label>
+                                            <input type="date" class="form-control" id="dob" max="2007-01-01">
+                                            <p id="dob-error" style="color: red;"></p>
+                                        </div>
+                                    </div><br>
+                                    <div class=" w-100">
+                                        <div class=" ">
+                                            <label for="autoSizingInput">Email</label>
+                                            <input type="email" class="form-control" id="email"
+                                                placeholder="Enter email">
+                                            <p id="email-error" style="color: red;"></p>
+                                        </div>
+                                        <div class>
+                                            <label for="autoSizingInput">Address</label>
+                                            <input type="text" class="form-control" id="address"
+                                                placeholder="Enter Address">
+                                            <p id="address-error" style="color: red;"></p>
+                                        </div>
+                                        <div class=" ">
+                                            <label for="autoSizingInput">Graduation
+                                                Year</label><br>
+                                            <select class="form-select" id="grd-year"
+                                                aria-label="Default select example" name="graduationYear">
+                                                <option value="2019">2019</option>
+                                                <option value="2020">2020</option>
+                                                <option value="2021">2021</option>
+                                                <option value="2022">2022</option>
+                                                <option value="2023">2023</option>
+                                                <option value="2024">2024</option>
+                                                <option value="2025">2025</option>
+                                                <option value="2026">2026</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- education feild -->
+                                <div class="education">
+                                    <div class="row education d-flex">
+                                        <div class=" d-flex justify-content-between w-100">
+                                            <h1>Education</h1>
+                                            <button class="icon-plus rounded-circle bg-dark w-auto ms-auto add-row "
+                                                id="ed-add"><i style="color: white;">+</i></button>
+
+                                        </div>
+                                        <div class="table-responsive  ">
+                                            <table class="table" id="formTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Degree/Board</th>
+                                                        <th scope="col">School/College</th>
+                                                        <th scope="col">Start
+                                                            Date</th>
+                                                        <th scope="col">paasout
+                                                            Year</th>
+                                                        <th scope="col">Percentage</th>
+                                                        <th scope="col">Backlog</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><input type="text" name id="degree/board" value="10th"></td>
+                                                        <td><input type="text" name id="school/College"></td>
+                                                        <td><input type="date" name id="startdate"></td>
+                                                        <td> <select class="form-select" id="passoutYear"
+                                                                name="passoutYear">
+                                                                <option value="2019">2019</option>
+                                                                <option value="2020">2020</option>
+                                                                <option value="2021">2021</option>
+                                                                <option value="2022">2022</option>
+                                                                <option value="2023">2023</option>
+                                                                <option value="2024">2024</option>
+                                                                <option value="2025">2025</option>
+                                                                <option value="2026">2026</option>
+                                                            </select>
+                                                        </td>
+                                                        <td><input type="number" name="percentage" id="percentage"
+                                                                min="0" max="100"></td>
+                                                        <td><input type="number" name="backlog" id="backlog" min="0"
+                                                                max="20">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+
+                                                        <td><input type="text" name id="degree/board" value="12th"></td>
+                                                        <td><input type="text" name id="school/College"></td>
+                                                        <td><input type="date" name id="startdate"></td>
+                                                        <td> <select class="form-select" id="passoutYear"
+                                                                name="passoutYear">
+                                                                <option value="2019">2019</option>
+                                                                <option value="2020">2020</option>
+                                                                <option value="2021">2021</option>
+                                                                <option value="2022">2022</option>
+                                                                <option value="2023">2023</option>
+                                                                <option value="2024">2024</option>
+                                                                <option value="2025">2025</option>
+                                                                <option value="2026">2026</option>
+                                                            </select>
+                                                        </td>
+                                                        <td><input type="number" name="percentage" id="percentage"
+                                                                min="0" max="100"></td>
+                                                        <td><input type="number" name="backlog" id="backlog" min="0"
+                                                                max="20">
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center mt-2">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="shBtn"
+                                            onclick="show()">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper.js (if needed) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <!-- DataTables JS -->
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+    <!-- Custom js -->
+    <script src="./asset/custom js/script.js"></script>
+</body>
+
+</html>
