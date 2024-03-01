@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+
+<body>
+    <form id="myForm">
+        <input class="validate" id="first-name" type="text">
+        <input class="validate" id="dob" type="date">
+        <input class="validate" id="email" type="email">
+        <input class="validate" id="address" type="text">
+        <button id="submitBtn" type="submit" disabled>Submit</button>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Attach event listeners to input fields
+            var inputs = document.getElementsByClassName('validate');
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener('input', validateForm);
+                inputs[i].addEventListener('change', validateForm);
+            }
+
+            // Function to validate the entire form
+            function validateForm() {
+                var isValid = true;
+
+                // Loop through each input field
+                for (var i = 0; i < inputs.length; i++) {
+                    var input = inputs[i];
+                    console.log(input.value);
+                    // Validate each input
+                    if (input.value.trim() === '') {
+                        displayErrorMessage(input, 'Please enter a value.');
+                        isValid = false;
+                    } else {
+                        removeErrorMessage(input);
+                    }
+                }
+
+                // Enable or disable submit button based on validation result
+                document.getElementById('submitBtn').disabled = !isValid;
+
+                return isValid;
+            }
+
+            // Function to display error message
+            function displayErrorMessage(inputElement, message) {
+                var errorMessageId = inputElement.id + '-error';
+                var errorMessageElement = document.getElementById(errorMessageId);
+                if (!errorMessageElement) {
+                    errorMessageElement = document.createElement('span');
+                    errorMessageElement.id = errorMessageId;
+                    errorMessageElement.classList.add('error-message');
+                    inputElement.parentNode.appendChild(errorMessageElement);
+                }
+                errorMessageElement.textContent = message;
+                inputElement.classList.add('error');
+            }
+
+            // Function to remove error message
+            function removeErrorMessage(inputElement) {
+                var errorMessageId = inputElement.id + '-error';
+                var errorMessageElement = document.getElementById(errorMessageId);
+                if (errorMessageElement) {
+                    errorMessageElement.parentNode.removeChild(errorMessageElement);
+                }
+                inputElement.classList.remove('error');
+                inputElement.classList.remove('error-message');
+            }
+        });
+
+    </script>
+</body>
+
+</html>
